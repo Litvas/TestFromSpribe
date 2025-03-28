@@ -1,5 +1,6 @@
 package com.litvas.booking.dto;
 
+import com.litvas.booking.domain.Client;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 import lombok.NoArgsConstructor;

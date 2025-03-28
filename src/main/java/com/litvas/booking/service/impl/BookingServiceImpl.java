@@ -13,9 +13,9 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -69,7 +69,7 @@ public class BookingServiceImpl implements BookingService {
 
     @Override
     @Transactional
-    @CacheEvict(value = "booking", allEntries = true)
+    @Cacheable(value = "booking", key = "#bookingId")
     public BookReservationDTO paidBooking(Long bookingId) {
         Booking booking = bookingRepository.getReferenceById(bookingId);
         booking.setIsPaid(true);

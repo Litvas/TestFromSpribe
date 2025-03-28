@@ -1,7 +1,6 @@
 package com.litvas.booking.dto;
 
 import com.litvas.booking.domain.Client;
-import com.litvas.booking.domain.Unit;
 import lombok.Data;
 
 import java.math.BigDecimal;

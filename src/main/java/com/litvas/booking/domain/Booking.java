@@ -34,13 +34,13 @@ public class Booking {
     private LocalDateTime createdAt;
 
     @Column(nullable = false)
-    private Boolean isPaid = false;
+    private Boolean isPaid;
 
     @OneToOne
     private Client client;
 
     @Column(nullable = false)
-    private Boolean isCanceled = false;
+    private Boolean isCanceled;
 
     @Column(nullable = false)
     private BigDecimal price;

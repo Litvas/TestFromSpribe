@@ -1,6 +1,5 @@
 package com.litvas.booking.service;
 
-import com.litvas.booking.domain.Booking;
 import com.litvas.booking.dto.BookReservationDTO;
 
 import java.time.LocalDate;

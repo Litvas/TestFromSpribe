@@ -7,7 +7,7 @@ import com.litvas.booking.service.UnitService;
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -28,7 +28,7 @@ public class UnitServiceImpl implements UnitService {
     private final UnitRepository unitRepository;
 
     @Override
-    @CacheEvict(value = "availableUnits", allEntries = true)
+    @Cacheable(value = "availableUnits", key = "#price.toString() + #checkInDate.toString() + #checkOutDate.toString() + #pageable.toString()")
     public Page<Unit> searchAvailableUnits(BigDecimal price, LocalDate checkInDate, LocalDate checkOutDate, Pageable pageable) {
         return unitRepository.findAvailableUnits(price, checkInDate, checkOutDate, pageable);
     }
